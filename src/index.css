@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  /* Backgrounds */
+  --color-bg: #f5f0e8;
+  --color-surface: #faf7f2;
+  --color-surface2: #f0ebe0;
+  --color-surface3: #e8e2d4;
+
+  /* Borders */
+  --color-border: rgba(120, 100, 70, 0.12);
+  --color-border2: rgba(120, 100, 70, 0.22);
+  --color-border3: rgba(120, 100, 70, 0.35);
+
+  /* Text */
+  --color-text: #2c2416;
+  --color-muted: #8a7b65;
+  --color-faint: #b8aa95;
+
+  /* Accents */
+  --color-ink: #3d3526;
+  --color-accent: #5c7a5c;
+  --color-accent2: #7a6c9e;
+  --color-accent3: #c47c4a;
+  --color-accent4: #b89a4a;
+  --color-red-soft: #c45a5a;
+  --color-blue-soft: #4a6e8a;
+
+  /* Progress */
+  --color-bar-bg: #e0d8c8;
+  --color-bar-fill: #5c7a5c;
+
+  /* Typography */
+  --font-display: 'Lora', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  /* Spacing */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+
+  /* Typography Scale */
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-base: 15px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+  --text-2xl: 36px;
+  --text-3xl: 56px;
+}
+
+
+@layer base {
+  body {
+    @apply bg-bg text-text font-body selection:bg-accent/20;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-ink font-medium;
+  }
+}
+
+@layer components {
+  .notebook-card {
+    @apply bg-surface border border-border rounded-lg p-6 transition-all duration-300;
+  }
+
+  .notebook-card:hover {
+    @apply border-border2;
+  }
+
+  .notebook-input {
+    @apply bg-surface2 border border-border2 rounded-md px-3 py-2 text-sm text-text font-body placeholder:text-faint transition-all focus:outline-none focus:border-accent focus:bg-surface;
+  }
+
+  .pill {
+    @apply px-2 py-0.5 rounded-sm text-[10px] font-mono font-medium uppercase tracking-wider;
+  }
+
+  .tab-underline {
+    @apply relative py-4 text-sm font-medium transition-all;
+  }
+
+  .tab-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-[2px] bg-accent transition-all scale-x-0;
+  }
+
+  .tab-underline.active {
+    @apply text-ink;
+  }
+
+  .tab-underline.active::after {
+    @apply scale-x-100;
+  }
+
+  /* Custom Rule Scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-bg;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface3 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted/30;
+  }
+
+  .ruled-row {
+    @apply border-b border-border py-2.5 transition-colors;
+  }
+  
+  .ruled-row:hover {
+    @apply bg-surface2;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ruled.Ink</title>
+    <meta name="description" content="Ruled.Ink — A warm, focused personal OS for students. Track skills, manage projects, plan content, and stay consistent." />
+    <meta property="og:title" content="Ruled.Ink" />
+    <meta property="og:description" content="Your personal productivity system. Built like a notebook. Works like a system." />
+    <meta name="theme-color" content="#f5f0e8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Mock for sendPrompt if not available in the environment
+      window.sendPrompt = window.sendPrompt || function(msg) {
+        console.log("PROMPT:", msg);
+        alert("AI Command Sent: " + msg);
+      };
+    </script>
+  </body>
+</html>

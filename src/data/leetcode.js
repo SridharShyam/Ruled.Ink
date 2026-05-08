@@ -1,0 +1,16 @@
+export const leetcodeProblems = [
+  { id: 1, name: 'Two Sum', difficulty: 'Easy', topic: 'Arrays', url: 'https://leetcode.com/problems/two-sum/' },
+  { id: 2, name: 'Best Time to Buy and Sell Stock', difficulty: 'Easy', topic: 'Arrays', url: 'https://leetcode.com/problems/best-time-to-buy-and-sell-stock/' },
+  { id: 3, name: 'Reverse Linked List', difficulty: 'Easy', topic: 'LinkedList', url: 'https://leetcode.com/problems/reverse-linked-list/' },
+  { id: 4, name: 'Merge Two Sorted Lists', difficulty: 'Easy', topic: 'LinkedList', url: 'https://leetcode.com/problems/merge-two-sorted-lists/' },
+  { id: 5, name: 'Valid Parentheses', difficulty: 'Easy', topic: 'Stack', url: 'https://leetcode.com/problems/valid-parentheses/' },
+  { id: 6, name: 'Min Stack', difficulty: 'Medium', topic: 'Stack', url: 'https://leetcode.com/problems/min-stack/' },
+  { id: 7, name: 'Binary Tree Inorder Traversal', difficulty: 'Easy', topic: 'Trees', url: 'https://leetcode.com/problems/binary-tree-inorder-traversal/' },
+  { id: 8, name: 'Maximum Depth of Binary Tree', difficulty: 'Easy', topic: 'Trees', url: 'https://leetcode.com/problems/maximum-depth-of-binary-tree/' },
+  { id: 9, name: 'Number of Islands', difficulty: 'Medium', topic: 'Graphs', url: 'https://leetcode.com/problems/number-of-islands/' },
+  { id: 10, name: 'Course Schedule', difficulty: 'Medium', topic: 'Graphs', url: 'https://leetcode.com/problems/course-schedule/' },
+  { id: 11, name: 'Climbing Stairs', difficulty: 'Easy', topic: 'DP', url: 'https://leetcode.com/problems/climbing-stairs/' },
+  { id: 12, name: 'Longest Common Subsequence', difficulty: 'Medium', topic: 'DP', url: 'https://leetcode.com/problems/longest-common-subsequence/' },
+  { id: 13, name: 'Longest Substring Without Repeating Characters', difficulty: 'Medium', topic: 'Strings', url: 'https://leetcode.com/problems/longest-substring-without-repeating-characters/' },
+  { id: 14, name: 'Valid Anagram', difficulty: 'Easy', topic: 'Strings', url: 'https://leetcode.com/problems/valid-anagram/' },
+];
