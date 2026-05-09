@@ -2,7 +2,7 @@
 
 > Your personal productivity system. Built like a notebook. Works like a system.
 
-![Ruled.Ink Today Tab](/public/screenshot.png)
+
 
 ## What is Ruled.Ink?
 Ruled.Ink is an open-source personal OS for students and builders.
@@ -39,7 +39,7 @@ React · Vite · Tailwind CSS · localStorage · Deployed on Vercel
 See `FORK_ME.md` for the full guide including Vercel deployment.
 
 ## Deploy Your Own
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/SridharShyam/Ruled.Ink)
+[Deploy on Vercel](https://vercel.com/new/clone?repository-url=https://github.com/SridharShyam/Ruled.Ink)
 
 ## License
 MIT — free to use, fork, and build on. Credit appreciated.
