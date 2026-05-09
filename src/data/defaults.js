@@ -1,6 +1,6 @@
 import { 
   DEFAULT_TASKS, 
-  DEFAULT_IDEAS, 
+  DEFAULT_IDEAS as DEFAULT_IDEAS_SRC, 
   DEFAULT_PROJECTS,
   DEFAULT_SKILLS,
   DEFAULT_SCHEDULE
@@ -8,7 +8,7 @@ import {
 
 export { DEFAULT_TASKS, DEFAULT_PROJECTS };
 
-export const DEFAULT_IDEAS_LIST = DEFAULT_IDEAS.map((text, i) => ({
+export const DEFAULT_IDEAS = DEFAULT_IDEAS_SRC.map((text, i) => ({
   id: i + 1,
   text,
   type: 'Note',
@@ -18,7 +18,7 @@ export const DEFAULT_IDEAS_LIST = DEFAULT_IDEAS.map((text, i) => ({
 
 export const DEFAULT_STUDY_LOG = DEFAULT_SKILLS.map(skill => ({
   skill: skill.name,
-  hours: skill.pct, // mapped to hours for now or just tracking progress
+  hours: skill.pct, 
   level: skill.pct > 50 ? 'Advanced' : 'Intermediate',
   lastActive: 'Today'
 }));
