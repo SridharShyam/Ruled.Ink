@@ -13,7 +13,7 @@ export default function StreakRow() {
 
   return (
     <div className="mt-10 pt-8 border-t border-border px-4">
-      <h3 className="font-body text-[11px] text-muted uppercase tracking-[0.2em] font-medium mb-4">14-Day Streak Consistency</h3>
+      <h3 className="font-body text-[12px] text-muted uppercase tracking-[0.2em] font-medium mb-4">14-Day Streak Consistency</h3>
       <div className="flex gap-2.5 flex-wrap">
         {days.map((day, i) => {
           const isDone = streakData[i];
@@ -28,7 +28,7 @@ export default function StreakRow() {
           return (
             <div key={i} className="flex flex-col items-center gap-2">
               <div 
-                className={`w-[24px] h-[24px] rounded-full border flex items-center justify-center font-mono text-[9px] transition-all
+                className={`w-[24px] h-[24px] rounded-full border flex items-center justify-center font-mono text-[10px] transition-all
                   ${styles}`}
               >
                 {day}
@@ -40,3 +40,4 @@ export default function StreakRow() {
     </div>
   );
 }
+

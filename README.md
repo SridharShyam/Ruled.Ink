@@ -39,10 +39,10 @@ React · Vite · Tailwind CSS · localStorage · Deployed on Vercel
 See `FORK_ME.md` for the full guide including Vercel deployment.
 
 ## Deploy Your Own
-[Deploy on Vercel](https://vercel.com/new/clone?repository-url=https://github.com/SridharShyam/Ruled.Ink)
+[Deploy on Vercel](https://vercel.com/new/clone?repository-url=https://github.com/YOUR_USERNAME/Ruled.Ink)
 
 ## License
 MIT — free to use, fork, and build on. Credit appreciated.
 
 ## Built by
-Shyam · [LinkedIn](https://linkedin.com/in/shyam-2005-ds-ml) · [GitHub](https://github.com/SridharShyam)
+User · [LinkedIn](https://linkedin.com/) · [GitHub](https://github.com/)

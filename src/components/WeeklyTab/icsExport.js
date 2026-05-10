@@ -7,28 +7,17 @@ export function generateICS(blocks, weekNumber) {
 
   blocks.forEach(block => {
     // block format: { title, type, time, duration, date }
-    const cleanDate = block.date.replace(/-/g, '');
-    const [hours, minutes] = block.time.split(':');
-    const startStr = `${cleanDate}T${hours}${minutes}00`;
-    
-    // Calculate end time
-    const start = new Date(
-      parseInt(cleanDate.substring(0, 4)),
-      parseInt(cleanDate.substring(4, 6)) - 1,
-      parseInt(cleanDate.substring(6, 8)),
-      parseInt(hours),
-      parseInt(minutes)
-    );
+    // Create local date object then convert to UTC string
+    const start = new Date(`${block.date}T${block.time}`);
     const duration = block.duration || 60;
     const end = new Date(start.getTime() + duration * 60000);
-    const endStr = end.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-    // Actually the replacement above is a bit messy, let's do it cleaner
-    const year = end.getFullYear();
-    const month = (end.getMonth() + 1).toString().padStart(2, '0');
-    const day = end.getDate().toString().padStart(2, '0');
-    const h = end.getHours().toString().padStart(2, '0');
-    const m = end.getMinutes().toString().padStart(2, '0');
-    const endFormatted = `${year}${month}${day}T${h}${m}00`;
+
+    const formatICSDate = (date) => {
+      return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    };
+
+    const startStr = formatICSDate(start);
+    const endFormatted = formatICSDate(end);
 
     icsContent.push('BEGIN:VEVENT');
     icsContent.push(`DTSTART:${startStr}`);

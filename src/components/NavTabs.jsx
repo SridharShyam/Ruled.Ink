@@ -24,7 +24,7 @@ export default function NavTabs({ activeTab, setActiveTab }) {
               className={`tab-underline whitespace-nowrap py-5 group transition-colors
                 ${activeTab === tab.id ? 'active' : 'text-muted hover:text-text'}`}
             >
-              <span className={`text-[13px] ${activeTab === tab.id ? 'font-medium' : 'font-normal'}`}>
+              <span className={`text-[14px] ${activeTab === tab.id ? 'font-medium' : 'font-normal'}`}>
                 {tab.label}
               </span>
             </button>
@@ -35,3 +35,4 @@ export default function NavTabs({ activeTab, setActiveTab }) {
 
   );
 }
+

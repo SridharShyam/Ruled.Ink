@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { USER } from '../data/user-config';
 
 export default function Header() {
+  const user = JSON.parse(localStorage.getItem('ruled_user') || '{"collegeStart": "09:00", "collegeEnd": "17:00"}');
   const [dateTime, setDateTime] = useState(new Date());
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function Header() {
 
   const isCollegeMode = () => {
     const timeStr = dateTime.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
-    return timeStr >= USER.collegeStart && timeStr < USER.collegeEnd;
+    return timeStr >= user.collegeStart && timeStr < user.collegeEnd;
   };
 
   return (
@@ -29,10 +29,10 @@ export default function Header() {
         </div>
 
         <div className="flex flex-col items-end gap-1">
-          <span className="font-mono text-[11px] text-muted tracking-wide">
+          <span className="font-mono text-[12px] text-muted tracking-wide">
             {formatDate(dateTime)}
           </span>
-          <span className="font-mono text-[11px] text-muted uppercase tracking-[0.1em]">
+          <span className="font-mono text-[12px] text-muted uppercase tracking-[0.1em]">
             {isCollegeMode() ? 'college hours' : 'home hours'}
           </span>
         </div>
@@ -40,3 +40,4 @@ export default function Header() {
     </header>
   );
 }
+

@@ -15,7 +15,7 @@ export default function IdeaBank({ ideas, setIdeas, addLog }) {
 
   return (
     <div className="notebook-card p-6">
-      <h3 className="font-display text-[15px] font-medium text-ink italic mb-6 flex items-center gap-2">
+      <h3 className="font-display text-[16px] font-medium text-ink italic mb-6 flex items-center gap-2">
         <Lightbulb size={18} className="text-accent3" />
         Fleeting Thoughts
       </h3>
@@ -34,14 +34,24 @@ export default function IdeaBank({ ideas, setIdeas, addLog }) {
       </form>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {ideas.map((idea) => (
-          <div key={idea.id} className="p-4 rounded-md border border-border bg-surface2/30 flex gap-3 group">
-            <Lightbulb size={16} className="text-accent3 shrink-0 mt-0.5 opacity-40 group-hover:opacity-100 transition-opacity" />
-            <p className="font-body text-[13px] leading-relaxed text-muted">{idea.text}</p>
+        {ideas.length === 0 ? (
+          <div className="col-span-full py-10 flex flex-col items-center justify-center text-center px-4">
+            <span className="text-2xl mb-3 opacity-30">💡</span>
+            <p className="text-[14px] text-muted font-body">
+              No ideas yet. Capture your first one below.
+            </p>
           </div>
-        ))}
+        ) : (
+          ideas.map((idea) => (
+            <div key={idea.id} className="p-4 rounded-md border border-border bg-surface2/30 flex gap-3 group">
+              <Lightbulb size={16} className="text-accent3 shrink-0 mt-0.5 opacity-40 group-hover:opacity-100 transition-opacity" />
+              <p className="font-body text-[14px] leading-relaxed text-muted">{idea.text}</p>
+            </div>
+          ))
+        )}
       </div>
     </div>
 
   );
 }
+

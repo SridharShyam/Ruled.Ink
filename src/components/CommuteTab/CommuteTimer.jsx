@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Play, Square, Bus } from 'lucide-react';
 
 export default function CommuteTimer() {
-  const [timeLeft, setTimeLeft] = useState(60 * 60);
+  const user = JSON.parse(localStorage.getItem('ruled_user') || '{"commuteMinutes": 45, "collegeStart": "09:00", "collegeEnd": "17:00"}');
+  const [timeLeft, setTimeLeft] = useState(parseInt(user.commuteMinutes || 0) * 60);
   const [isActive, setIsActive] = useState(false);
   const timerRef = useRef(null);
 
@@ -45,9 +46,37 @@ export default function CommuteTimer() {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
+  const getCommuteTimes = () => {
+    const commute = parseInt(user.commuteMinutes || 0);
+    const collegeStart = user.collegeStart || "09:00";
+    const collegeEnd = user.collegeEnd || "17:00";
+
+    const parse = (t) => {
+      if (!t || typeof t !== 'string') return 0;
+      const [h, m] = t.split(':').map(Number);
+      return (h || 0) * 60 + (m || 0);
+    };
+
+    const format = (min) => {
+      const h = Math.floor(min / 60) % 24;
+      const m = min % 60;
+      return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+    };
+
+    const morningStart = parse(collegeStart) - commute;
+    const eveningEnd = parse(collegeEnd) + commute;
+
+    return {
+      morning: `${format(morningStart)} - ${collegeStart}`,
+      evening: `${collegeEnd} - ${format(eveningEnd)}`
+    };
+  };
+
+  const times = getCommuteTimes();
+
   return (
     <div className="flex flex-col items-center gap-6 py-8">
-      <div className="font-mono text-[56px] text-ink tabular-nums leading-none">
+      <div className="font-mono text-[57px] text-ink tabular-nums leading-none">
         {formatTime(timeLeft)}
       </div>
 
@@ -65,14 +94,14 @@ export default function CommuteTimer() {
               onClick={startTimer}
               className="flex-1 bg-accent hover:bg-accent/90 text-surface py-6 rounded-md font-medium text-sm tracking-widest transition-all flex flex-col items-center gap-2"
             >
-              <span className="opacity-50 text-[10px]">07:30 - 08:30</span>
+              <span className="opacity-50 text-[11px]">{times.morning}</span>
               MORNING COMMUTE
             </button>
             <button 
               onClick={startTimer}
               className="flex-1 bg-surface2 border border-border hover:border-accent/30 text-text py-6 rounded-md font-medium text-sm tracking-widest transition-all flex flex-col items-center gap-2"
             >
-              <span className="opacity-50 text-[10px]">17:00 - 18:00</span>
+              <span className="opacity-50 text-[11px]">{times.evening}</span>
               EVENING COMMUTE
             </button>
           </>
@@ -89,3 +118,4 @@ export default function CommuteTimer() {
 
   );
 }
+

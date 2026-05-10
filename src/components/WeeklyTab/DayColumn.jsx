@@ -31,7 +31,7 @@ export default function DayColumn({ day, date, blocks, onAddBlock, isToday }) {
             className={`p-3 border-l-2 text-xs font-body leading-tight group relative
               ${typeColors[block.type] || 'bg-surface2 text-muted'}`}
           >
-            <div className="font-mono text-[9px] opacity-60 mb-1">{block.time}</div>
+            <div className="font-mono text-[10px] opacity-60 mb-1">{block.time}</div>
             <div className="font-medium text-text">{block.title}</div>
           </div>
         ))}
@@ -42,7 +42,7 @@ export default function DayColumn({ day, date, blocks, onAddBlock, isToday }) {
             onClick={() => setShowForm(true)}
             className="mt-2 py-3 border border-dashed border-border rounded-md text-faint hover:text-accent hover:border-accent/30 hover:bg-accent/5 transition-all flex items-center justify-center"
           >
-            <span className="text-[10px] font-medium uppercase tracking-widest">+</span>
+            <span className="text-[11px] font-medium uppercase tracking-widest">+</span>
           </button>
         ) : (
           <BlockForm onSave={(block) => { onAddBlock(block); setShowForm(false); }} onCancel={() => setShowForm(false)} />
@@ -51,3 +51,4 @@ export default function DayColumn({ day, date, blocks, onAddBlock, isToday }) {
     </div>
   );
 }
+

@@ -70,14 +70,14 @@ export default function FocusTab({ sessions, setSessions, addLog, setIsFocusActi
         <div className="flex gap-6">
           <button 
             onClick={() => { setMode('pomodoro'); setTimeLeft(25 * 60); setIsActive(false); setIsFocusActive(false); }}
-            className={`font-body text-[13px] tracking-widest uppercase transition-all pb-1
+            className={`font-body text-[14px] tracking-widest uppercase transition-all pb-1
               ${mode === 'pomodoro' ? 'text-ink font-medium border-b border-ink' : 'text-faint hover:text-muted'}`}
           >
             focus
           </button>
           <button 
             onClick={() => { setMode('break'); setTimeLeft(5 * 60); setIsActive(false); setIsFocusActive(false); }}
-            className={`font-body text-[13px] tracking-widest uppercase transition-all pb-1
+            className={`font-body text-[14px] tracking-widest uppercase transition-all pb-1
               ${mode === 'break' ? 'text-ink font-medium border-b border-ink' : 'text-faint hover:text-muted'}`}
           >
             break
@@ -91,7 +91,7 @@ export default function FocusTab({ sessions, setSessions, addLog, setIsFocusActi
             <button
               key={d}
               onClick={() => { setTimeLeft(d * 60); setIsActive(false); setIsFocusActive(false); }}
-              className={`font-mono text-[11px] px-2 py-0.5 rounded transition-all
+              className={`font-mono text-[12px] px-2 py-0.5 rounded transition-all
                 ${timeLeft === d * 60 ? 'bg-accent/10 text-accent font-bold' : 'text-faint hover:text-muted'}`}
             >
               {d}m
@@ -100,11 +100,11 @@ export default function FocusTab({ sessions, setSessions, addLog, setIsFocusActi
         </div>
       </div>
 
-      <div className="font-display text-[64px] md:text-[84px] text-ink italic font-normal tracking-tighter mb-4 tabular-nums">
+      <div className="font-display text-[65px] md:text-[85px] text-ink italic font-normal tracking-tighter mb-4 tabular-nums">
         {formatTime(timeLeft)}
       </div>
 
-      <div className="mb-12 font-mono text-[10px] text-faint uppercase tracking-[0.2em]">
+      <div className="mb-12 font-mono text-[11px] text-faint uppercase tracking-[0.2em]">
         {sessions} SESSIONS COMPLETED TODAY
       </div>
 
@@ -124,11 +124,12 @@ export default function FocusTab({ sessions, setSessions, addLog, setIsFocusActi
       </div>
 
       <div className="max-w-md border-l-2 border-border3 pl-8 py-2">
-        <p className="font-display text-[15px] italic text-muted leading-[1.8]">
+        <p className="font-display text-[16px] italic text-muted leading-[1.8]">
           "Deep work is the ability to focus without distraction on a cognitively demanding task. It’s a skill that allows you to quickly master complicated information and produce better results in less time."
         </p>
-        <span className="block mt-4 font-mono text-[10px] text-faint uppercase tracking-widest">— cal newport</span>
+        <span className="block mt-4 font-mono text-[11px] text-faint uppercase tracking-widest">— cal newport</span>
       </div>
     </div>
   );
 }
+

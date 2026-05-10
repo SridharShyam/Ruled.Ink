@@ -47,7 +47,7 @@ export default function MonthView({ currentDate, content, onAddPiece, showForm, 
                     <span className={`font-mono text-sm ${isToday ? 'text-accent underline' : 'text-faint'}`}>{day}</span>
                     <button 
                       onClick={() => setShowForm(dateStr)}
-                      className="opacity-0 group-hover:opacity-100 text-[10px] text-accent hover:underline"
+                      className="opacity-0 group-hover:opacity-100 text-[11px] text-accent hover:underline"
                     >
                       +
                     </button>
@@ -56,7 +56,7 @@ export default function MonthView({ currentDate, content, onAddPiece, showForm, 
                     {dayContent.map((item, idx) => (
                       <div 
                         key={idx} 
-                        className={`px-1.5 py-0.5 rounded-sm text-[8px] font-medium truncate ${platformColors[item.platform] || 'bg-muted text-surface'}`}
+                        className={`px-1.5 py-0.5 rounded-sm text-[9px] font-medium truncate ${platformColors[item.platform] || 'bg-muted text-surface'}`}
                       >
                         {item.title}
                       </div>
@@ -89,3 +89,4 @@ export default function MonthView({ currentDate, content, onAddPiece, showForm, 
     </div>
   );
 }
+

@@ -22,7 +22,12 @@ export default function useLocalStorage(key, initialValue) {
       setStoredValue(valueToStore);
       window.localStorage.setItem(key, JSON.stringify(valueToStore));
     } catch (error) {
-      console.log(error);
+      console.error("LocalStorage Error:", error);
+      if (error.name === 'QuotaExceededError' || error.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+        window.dispatchEvent(new CustomEvent('ruled_storage_error', { 
+          detail: { message: "Storage full! Please clear some data to continue saving." } 
+        }));
+      }
     }
   };
 

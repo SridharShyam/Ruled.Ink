@@ -23,7 +23,7 @@ export default function LearnCard() {
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
           {resource.type === 'Video' ? <PlayCircle size={14} className="text-accent3" /> : <FileText size={14} className="text-blue-soft" />}
-          <span className={`text-[10px] font-medium uppercase tracking-widest ${resource.type === 'Video' ? 'text-accent3' : 'text-blue-soft'}`}>{resource.type}</span>
+          <span className={`text-[11px] font-medium uppercase tracking-widest ${resource.type === 'Video' ? 'text-accent3' : 'text-blue-soft'}`}>{resource.type}</span>
         </div>
         <h4 className="font-display text-lg font-medium leading-tight">{resource.title}</h4>
         <p className="text-xs text-muted font-mono">{resource.source}</p>
@@ -33,10 +33,11 @@ export default function LearnCard() {
         href={resource.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 w-full bg-surface2 border border-border3 hover:border-accent py-3 rounded-md text-accent font-medium text-[13px] tracking-widest flex items-center justify-center gap-3 transition-all"
+        className="mt-4 w-full bg-surface2 border border-border3 hover:border-accent py-3 rounded-md text-accent font-medium text-[14px] tracking-widest flex items-center justify-center gap-3 transition-all"
       >
         OPEN RESOURCE <ExternalLink size={14} />
       </a>
     </div>
   );
 }
+

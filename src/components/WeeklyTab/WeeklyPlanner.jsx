@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, ChevronLeft, ChevronRight, Download } from 'lucide-react';
 import DayColumn from './DayColumn';
 import { generateICS } from './icsExport';
-import { DEFAULT_WEEKLY, FIXED_SCHEDULE_BLOCKS } from '../../data/defaults';
+import { DEFAULT_WEEKLY } from '../../data/defaults';
+import { DEFAULT_SCHEDULE } from '../../data/user-config';
 
 export default function WeeklyPlanner({ addLog, showToast }) {
+  const scheduleJson = localStorage.getItem('ruled_schedule');
+  const FIXED_BLOCKS = scheduleJson ? JSON.parse(scheduleJson) : DEFAULT_SCHEDULE;
   const [currentDate, setCurrentDate] = useState(new Date());
   const [weeklyData, setWeeklyData] = useState({});
 
@@ -86,8 +89,6 @@ export default function WeeklyPlanner({ addLog, showToast }) {
   const todayIdx = (now.getDay() + 6) % 7;
   const isCurrentWeek = getWeekKey(now) === getWeekKey(currentDate);
 
-  const FIXED_BLOCKS = FIXED_SCHEDULE_BLOCKS;
-
   return (
     <div className="animate-in">
       <header className="flex items-center justify-between mb-10">
@@ -101,7 +102,7 @@ export default function WeeklyPlanner({ addLog, showToast }) {
 
         <button 
           onClick={handleExport}
-          className="flex items-center gap-2 px-6 py-2 border border-border3 rounded-md text-muted text-[13px] font-medium hover:bg-surface2 transition-all"
+          className="flex items-center gap-2 px-6 py-2 border border-border3 rounded-md text-muted text-[14px] font-medium hover:bg-surface2 transition-all"
         >
           <Download size={14} /> EXPORT CALENDAR
         </button>
@@ -130,3 +131,4 @@ export default function WeeklyPlanner({ addLog, showToast }) {
   </div>
 );
 }
+

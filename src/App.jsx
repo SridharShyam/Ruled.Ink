@@ -10,7 +10,9 @@ import WeeklyPlanner from './components/WeeklyTab/WeeklyPlanner.jsx';
 import ProjectBoard from './components/ProjectsTab/ProjectBoard.jsx';
 import ContentCalendar from './components/ContentCalTab/ContentCalendar.jsx';
 import CommuteMode from './components/CommuteTab/CommuteMode.jsx';
+import Onboarding from './components/Onboarding.jsx';
 import Toast from './components/Toast.jsx';
+import ErrorBoundary from './components/ErrorBoundary.jsx';
 import useLocalStorage from './hooks/useLocalStorage.js';
 import { 
   DEFAULT_TASKS, 
@@ -34,10 +36,26 @@ function App() {
   
   const todayDateStr = new Date().toISOString().split('T')[0];
   const [sessions, setSessions] = useLocalStorage(`ruled_sessions_${todayDateStr}`, DEFAULT_SESSIONS);
+  const [isInitialized, setIsInitialized] = useState(!!localStorage.getItem('ruled_initialized'));
+  const [showWelcome, setShowWelcome] = useState(false);
+
+  const user = JSON.parse(localStorage.getItem('ruled_user') || '{"name": "User", "commuteMinutes": 0, "collegeStart": "09:00", "collegeEnd": "17:00"}');
 
   const showToast = useCallback((message, type = 'success') => {
     setToast({ message, type });
   }, []);
+
+  const handleOnboardingComplete = () => {
+    setIsInitialized(true);
+    setShowWelcome(true);
+  };
+
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good morning';
+    if (hour < 17) return 'Good afternoon';
+    return 'Good evening';
+  };
 
   const addLog = useCallback((text) => {
     const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -65,18 +83,33 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Commute Auto-activation
+  // Storage Quota Error Listener
   useEffect(() => {
+    const handleStorageError = (e) => {
+      showToast(e.detail.message, 'error');
+    };
+    window.addEventListener('ruled_storage_error', handleStorageError);
+    return () => window.removeEventListener('ruled_storage_error', handleStorageError);
+  }, [showToast]);
+
+  // Commute Auto-activation (session-based)
+  useEffect(() => {
+    const isAutoSwitched = sessionStorage.getItem('ruled_commute_autoswitched');
+    if (isAutoSwitched) return;
+
     const now = new Date();
     const hour = now.getHours();
     const min = now.getMinutes();
     const isCommuteTime = (hour === 7 && min >= 30) || (hour === 8 && min <= 30) || (hour === 17);
     
-    if (isCommuteTime && activeTab !== 'commute') {
+    if (isCommuteTime) {
       setActiveTab('commute');
-      showToast('🚌 Commute time detected — switching to Commute Mode');
+      sessionStorage.setItem('ruled_commute_autoswitched', 'true');
+      setTimeout(() => {
+        showToast('🚌 Commute time detected — switching to Commute Mode');
+      }, 100);
     }
-  }, [activeTab, showToast]);
+  }, [showToast]);
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -103,6 +136,10 @@ function App() {
     }
   };
 
+  if (!isInitialized) {
+    return <Onboarding onComplete={handleOnboardingComplete} />;
+  }
+
   return (
     <div className={`min-h-screen bg-bg text-text selection:bg-accent/30 flex flex-col transition-all duration-700`}>
       {!isFocusActive && <Header />}
@@ -110,9 +147,18 @@ function App() {
       
       <main className={`flex-1 overflow-auto transition-all duration-700`}>
         <div className="max-w-[1100px] mx-auto py-8 md:py-14 px-4 md:px-10">
+          {showWelcome && (
+            <div className="mb-8 p-4 bg-accent/5 border border-accent/20 rounded-lg flex justify-between items-center animate-in">
+              <p className="text-sm font-medium text-ink">
+                {getGreeting()}, {user.name}. Your system is ready.
+              </p>
+              <button onClick={() => setShowWelcome(false)} className="text-muted hover:text-text text-lg leading-none">×</button>
+            </div>
+          )}
 
-
-          {renderTabContent()}
+          <ErrorBoundary key={activeTab}>
+            {renderTabContent()}
+          </ErrorBoundary>
         </div>
       </main>
 

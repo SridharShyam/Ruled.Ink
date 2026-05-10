@@ -27,7 +27,7 @@ export default function BlockForm({ onSave, onCancel }) {
         <select 
           value={type} 
           onChange={(e) => setType(e.target.value)}
-          className="notebook-input text-[10px] py-1 px-2"
+          className="notebook-input text-[11px] py-1 px-2"
         >
           <option>Study</option>
           <option>Project Work</option>
@@ -41,7 +41,7 @@ export default function BlockForm({ onSave, onCancel }) {
           type="time"
           value={time}
           onChange={(e) => setTime(e.target.value)}
-          className="notebook-input text-[10px] py-1 px-2"
+          className="notebook-input text-[11px] py-1 px-2"
         />
       </div>
       <div className="flex items-center gap-2">
@@ -50,15 +50,15 @@ export default function BlockForm({ onSave, onCancel }) {
           placeholder="Min"
           value={duration}
           onChange={(e) => setDuration(e.target.value)}
-          className="notebook-input text-[10px] py-1 px-2 w-16"
+          className="notebook-input text-[11px] py-1 px-2 w-16"
         />
-        <span className="text-[9px] text-muted uppercase font-medium">MINUTES</span>
+        <span className="text-[10px] text-muted uppercase font-medium">MINUTES</span>
       </div>
       <div className="flex gap-2 mt-1">
-        <button type="submit" className="flex-1 bg-accent/20 hover:bg-accent/30 text-accent text-[10px] font-medium py-1.5 rounded-md transition-colors flex items-center justify-center gap-1">
+        <button type="submit" className="flex-1 bg-accent/20 hover:bg-accent/30 text-accent text-[11px] font-medium py-1.5 rounded-md transition-colors flex items-center justify-center gap-1">
           <Save size={12} /> SAVE
         </button>
-        <button type="button" onClick={onCancel} className="bg-surface border border-border text-muted text-[10px] font-medium py-1.5 px-3 rounded-md transition-colors">
+        <button type="button" onClick={onCancel} className="bg-surface border border-border text-muted text-[11px] font-medium py-1.5 px-3 rounded-md transition-colors">
           <X size={12} />
         </button>
       </div>
@@ -66,3 +66,4 @@ export default function BlockForm({ onSave, onCancel }) {
 
   );
 }
+

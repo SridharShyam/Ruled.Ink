@@ -26,14 +26,14 @@ export default function KanbanBoard({ kanbanData }) {
             {kanbanData[col.id]?.map((card, idx) => (
               <div key={idx} className="notebook-card p-4 transition-all">
                 <div className="flex flex-wrap gap-2 mb-3">
-                  <span className={`px-2 py-0.5 rounded-sm text-[8px] font-medium border ${platformBadges[card.platform] || 'bg-surface2 text-muted border-border'}`}>
+                  <span className={`px-2 py-0.5 rounded-sm text-[9px] font-medium border ${platformBadges[card.platform] || 'bg-surface2 text-muted border-border'}`}>
                     {card.platform}
                   </span>
-                  <span className="px-2 py-0.5 bg-surface2 border border-border rounded-sm text-[8px] font-medium text-muted">
+                  <span className="px-2 py-0.5 bg-surface2 border border-border rounded-sm text-[9px] font-medium text-muted">
                     {card.duration}
                   </span>
                 </div>
-                <h4 className="font-display text-[15px] font-medium text-ink leading-tight">{card.title}</h4>
+                <h4 className="font-display text-[16px] font-medium text-ink leading-tight">{card.title}</h4>
               </div>
             ))}
           </div>
@@ -43,3 +43,4 @@ export default function KanbanBoard({ kanbanData }) {
 
   );
 }
+

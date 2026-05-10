@@ -38,7 +38,7 @@ export default function ProjectForm({ onSave, onCancel, initialData = null }) {
               value={formData.name}
               onChange={(e) => setFormData({...formData, name: e.target.value})}
               className="notebook-input w-full"
-              placeholder="e.g. GNN Protein Folding"
+              placeholder="e.g. Personal Website"
             />
           </div>
           <div className="space-y-1.5">
@@ -127,7 +127,7 @@ export default function ProjectForm({ onSave, onCancel, initialData = null }) {
 
       <div className="mt-8 flex items-center justify-between border-t border-border pt-6">
         <div className="flex-1 max-w-xs">
-          <div className="flex justify-between items-center text-[10px] font-mono mb-2">
+          <div className="flex justify-between items-center text-[11px] font-mono mb-2">
             <span className="text-muted uppercase">Initial Progress</span>
             <span className="text-accent">{formData.progress}%</span>
           </div>
@@ -141,10 +141,10 @@ export default function ProjectForm({ onSave, onCancel, initialData = null }) {
           />
         </div>
         <div className="flex gap-4">
-          <button type="button" onClick={onCancel} className="px-6 py-2 border border-border rounded-md text-[13px] font-medium text-muted hover:bg-surface2 transition-all">
+          <button type="button" onClick={onCancel} className="px-6 py-2 border border-border rounded-md text-[14px] font-medium text-muted hover:bg-surface2 transition-all">
             CANCEL
           </button>
-          <button type="submit" className="px-8 py-2 bg-accent text-surface rounded-md text-[13px] font-medium hover:bg-accent/90 transition-all flex items-center gap-2">
+          <button type="submit" className="px-8 py-2 bg-accent text-surface rounded-md text-[14px] font-medium hover:bg-accent/90 transition-all flex items-center gap-2">
             <Save size={14} /> SAVE PROJECT
           </button>
         </div>
@@ -153,3 +153,4 @@ export default function ProjectForm({ onSave, onCancel, initialData = null }) {
 
   );
 }
+

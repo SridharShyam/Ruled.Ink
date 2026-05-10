@@ -20,14 +20,14 @@ export default function ProjectCard({ project, onEdit, onArchive, onUpdateProgre
           <h3 className="font-display text-lg font-medium text-ink leading-tight">{project.name}</h3>
           <p className="font-body text-xs text-muted leading-relaxed line-clamp-2">{project.description}</p>
         </div>
-        <div className={`px-2 py-0.5 rounded-sm text-[9px] font-mono font-medium uppercase tracking-wider border ${statusColors[project.status] || statusColors.Idea}`}>
+        <div className={`px-2 py-0.5 rounded-sm text-[10px] font-mono font-medium uppercase tracking-wider border ${statusColors[project.status] || statusColors.Idea}`}>
           {project.status}
         </div>
       </div>
 
       <div className="flex flex-wrap gap-2">
         {project.stack.map((tag, i) => (
-          <span key={i} className="px-2 py-0.5 bg-surface2 border border-border rounded-sm text-[9px] font-mono text-muted">
+          <span key={i} className="px-2 py-0.5 bg-surface2 border border-border rounded-sm text-[10px] font-mono text-muted">
             {tag}
           </span>
         ))}
@@ -46,7 +46,7 @@ export default function ProjectCard({ project, onEdit, onArchive, onUpdateProgre
         </div>
 
         {project.deadline && (
-          <div className="flex items-center gap-1.5 font-mono text-[10px] text-muted">
+          <div className="flex items-center gap-1.5 font-mono text-[11px] text-muted">
             <Calendar size={11} className={isOverdue ? 'text-red-soft font-bold' : 'text-faint'} />
             <span className={isOverdue ? 'text-red-soft font-bold' : ''}>
               {new Date(project.deadline).toLocaleDateString('en-US', { month: 'short', day: '2-digit' })}
@@ -56,7 +56,7 @@ export default function ProjectCard({ project, onEdit, onArchive, onUpdateProgre
       </div>
 
       <div className="space-y-2 pt-2 border-t border-border">
-        <div className="flex justify-between items-center font-mono text-[9px] uppercase tracking-widest text-faint">
+        <div className="flex justify-between items-center font-mono text-[10px] uppercase tracking-widest text-faint">
           <span>Completion</span>
           <span className="text-accent font-bold">{project.progress}%</span>
         </div>
@@ -79,3 +79,4 @@ export default function ProjectCard({ project, onEdit, onArchive, onUpdateProgre
     </div>
   );
 }
+

@@ -48,44 +48,53 @@ export default function ProjectBoard({ addLog, showToast }) {
         <div className="flex gap-4">
           <button 
             onClick={() => setShowArchived(!showArchived)}
-            className="text-[11px] font-mono text-muted uppercase tracking-wider hover:text-accent transition-all"
+            className="text-[12px] font-mono text-muted uppercase tracking-wider hover:text-accent transition-all"
           >
             {showArchived ? 'Hide Archived' : `Show Archived (${projects.filter(p => p.archived).length})`}
           </button>
           <button 
             onClick={() => setShowForm(true)}
-            className="bg-accent text-surface px-8 py-2.5 rounded-md text-[13px] font-medium hover:bg-accent/90 transition-all flex items-center gap-2"
+            className="bg-accent text-surface px-8 py-2.5 rounded-md text-[14px] font-medium hover:bg-accent/90 transition-all flex items-center gap-2"
           >
-            <Plus size={16} /> NEW MISSION
+            <Plus size={16} /> NEW PROJECT
           </button>
         </div>
       </header>
 
       <div className="flex gap-10 overflow-x-auto pb-10 min-h-[700px]">
-        {COLUMNS.map(col => {
-          const colProjects = projects.filter(p => p.status === col && (showArchived ? p.archived : !p.archived));
-          return (
-            <div key={col} className="flex-1 min-w-[280px] flex flex-col gap-8 border-r border-border last:border-r-0 pr-10">
-              <div className="flex items-center justify-between border-b border-border pb-3">
-                <h3 className="font-body text-xs font-medium text-muted uppercase tracking-[0.1em]">{col} ({colProjects.length})</h3>
-              </div>
+        {projects.length === 0 ? (
+          <div className="w-full py-20 flex flex-col items-center justify-center text-center px-4 border border-dashed border-border rounded-lg">
+            <span className="text-2xl mb-3 opacity-30">🚀</span>
+            <p className="text-[14px] text-muted font-body">
+              No projects yet. Click "+ New Project" to add your first one.
+            </p>
+          </div>
+        ) : (
+          COLUMNS.map(col => {
+            const colProjects = projects.filter(p => p.status === col && (showArchived ? p.archived : !p.archived));
+            return (
+              <div key={col} className="flex-1 min-w-[280px] flex flex-col gap-8 border-r border-border last:border-r-0 pr-10">
+                <div className="flex items-center justify-between border-b border-border pb-3">
+                  <h3 className="font-body text-xs font-medium text-muted uppercase tracking-[0.1em]">{col} ({colProjects.length})</h3>
+                </div>
 
-              <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-6">
 
-                {colProjects.map(project => (
-                  <ProjectCard 
-                    key={project.id} 
-                    project={project}
-                    onEdit={(p) => { setEditingProject(p); setShowForm(true); }}
-                    onArchive={archiveProject}
-                    onUpdateProgress={updateProgress}
-                    onDelete={deleteProject}
-                  />
-                ))}
+                  {colProjects.map(project => (
+                    <ProjectCard 
+                      key={project.id} 
+                      project={project}
+                      onEdit={(p) => { setEditingProject(p); setShowForm(true); }}
+                      onArchive={archiveProject}
+                      onUpdateProgress={updateProgress}
+                      onDelete={deleteProject}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
       </div>
 
       {showForm && (
@@ -98,3 +107,4 @@ export default function ProjectBoard({ addLog, showToast }) {
     </div>
   );
 }
+

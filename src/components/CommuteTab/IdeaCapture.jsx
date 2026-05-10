@@ -21,7 +21,7 @@ export default function IdeaCapture({ ideas, setIdeas, addLog, showToast }) {
     <div className="bg-surface border border-border p-6 rounded-lg flex flex-col gap-4">
       <div className="flex items-center gap-3 mb-2">
         <Lightbulb size={18} className="text-accent4" />
-        <span className="font-display text-[15px] font-medium text-ink italic">Fleeting Thought</span>
+        <span className="font-display text-[16px] font-medium text-ink italic">Fleeting Thought</span>
       </div>
       <textarea 
         value={text}
@@ -31,17 +31,17 @@ export default function IdeaCapture({ ideas, setIdeas, addLog, showToast }) {
       />
       <button 
         onClick={handleSave}
-        className="w-full bg-ink text-surface py-3 rounded-md font-body text-[13px] font-medium hover:bg-ink/90 transition-all"
+        className="w-full bg-ink text-surface py-3 rounded-md font-body text-[14px] font-medium hover:bg-ink/90 transition-all"
       >
         SAVE TO BACKLOG
       </button>
 
       {commuteIdeas.length > 0 && (
         <div className="flex flex-col gap-2 mt-2 border-t border-border pt-4">
-          <h4 className="text-[10px] font-mono text-faint uppercase tracking-wider">Recent Commute Ideas</h4>
+          <h4 className="text-[11px] font-mono text-faint uppercase tracking-wider">Recent Commute Ideas</h4>
           <div className="flex flex-col gap-2">
             {commuteIdeas.map(i => (
-              <p key={i.id} className="text-[12px] text-muted italic leading-relaxed border-l border-border pl-3">
+              <p key={i.id} className="text-[13px] text-muted italic leading-relaxed border-l border-border pl-3">
                 {i.text}
               </p>
             ))}
@@ -51,3 +51,4 @@ export default function IdeaCapture({ ideas, setIdeas, addLog, showToast }) {
     </div>
   );
 }
+

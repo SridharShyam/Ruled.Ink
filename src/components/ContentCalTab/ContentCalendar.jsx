@@ -44,7 +44,7 @@ export default function ContentCalendar({ addLog, showToast }) {
 
   return (
     <div className="animate-in relative">
-      {nextPost && (
+      {nextPost ? (
         <div className={`mb-8 p-4 rounded-lg border flex items-center justify-between ${nextPost.color}`}>
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-current animate-pulse" />
@@ -52,6 +52,13 @@ export default function ContentCalendar({ addLog, showToast }) {
               Next post due: <span className="font-bold">{nextPost.title}</span> in {nextPost.diff} days ({nextPost.scheduledDate})
             </span>
           </div>
+        </div>
+      ) : content.length === 0 && (
+        <div className="mb-8 p-6 bg-surface2/30 border border-border rounded-lg flex flex-col items-center justify-center text-center animate-in">
+          <span className="text-xl mb-2 opacity-30">📅</span>
+          <p className="text-[14px] text-muted font-body">
+            No content scheduled yet. Click any date to add a piece.
+          </p>
         </div>
       )}
 
@@ -74,14 +81,14 @@ export default function ContentCalendar({ addLog, showToast }) {
           <div className="flex bg-surface2 p-1 rounded-md border border-border">
             <button 
               onClick={() => setView('month')}
-              className={`px-4 py-1.5 rounded-sm text-[11px] font-medium uppercase tracking-[0.1em] transition-all
+              className={`px-4 py-1.5 rounded-sm text-[12px] font-medium uppercase tracking-[0.1em] transition-all
                 ${view === 'month' ? 'bg-surface text-ink border border-border' : 'text-muted hover:text-ink'}`}
             >
               Month
             </button>
             <button 
               onClick={() => setView('week')}
-              className={`px-4 py-1.5 rounded-sm text-[11px] font-medium uppercase tracking-[0.1em] transition-all
+              className={`px-4 py-1.5 rounded-sm text-[12px] font-medium uppercase tracking-[0.1em] transition-all
                 ${view === 'week' ? 'bg-surface text-ink border border-border' : 'text-muted hover:text-ink'}`}
             >
               Week
@@ -117,3 +124,4 @@ export default function ContentCalendar({ addLog, showToast }) {
   </div>
 );
 }
+

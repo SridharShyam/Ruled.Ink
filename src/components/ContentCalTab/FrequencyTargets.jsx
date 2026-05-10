@@ -36,8 +36,8 @@ export default function FrequencyTargets({ content }) {
         return (
           <div key={t.platform} className="flex flex-col gap-2 min-w-[150px] flex-1">
             <div className="flex justify-between items-end">
-              <span className="text-[10px] font-medium tracking-[0.1em] text-muted uppercase">{t.platform}</span>
-              <span className="text-[11px] font-mono">
+              <span className="text-[11px] font-medium tracking-[0.1em] text-muted uppercase">{t.platform}</span>
+              <span className="text-[12px] font-mono">
                 <span className={actual >= t.target ? 'text-accent2' : 'text-text'}>{actual}</span>
                 <span className="text-muted/40 mx-1">/</span>
                 <span className="text-muted">{t.platform === 'YouTube' ? '0.5' : t.target}</span>
@@ -56,3 +56,4 @@ export default function FrequencyTargets({ content }) {
 
   );
 }
+

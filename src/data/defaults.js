@@ -8,20 +8,9 @@ import {
 
 export { DEFAULT_TASKS, DEFAULT_PROJECTS };
 
-export const DEFAULT_IDEAS = DEFAULT_IDEAS_SRC.map((text, i) => ({
-  id: i + 1,
-  text,
-  type: 'Note',
-  date: new Date().toISOString(),
-  platform: 'LinkedIn'
-}));
+export const DEFAULT_IDEAS = [];
 
-export const DEFAULT_STUDY_LOG = DEFAULT_SKILLS.map(skill => ({
-  skill: skill.name,
-  hours: skill.pct, 
-  level: skill.pct > 50 ? 'Advanced' : 'Intermediate',
-  lastActive: 'Today'
-}));
+export const DEFAULT_STUDY_LOG = [];
 
 export const FIXED_SCHEDULE_BLOCKS = DEFAULT_SCHEDULE;
 

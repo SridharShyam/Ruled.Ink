@@ -12,25 +12,26 @@ export default function IdeaCard({ idea }) {
 
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
-          <span className={`pl-2 font-mono text-[9px] font-medium uppercase tracking-wider ${platformStyles[idea.platform] || 'border-l-2 border-faint text-faint'}`}>
+          <span className={`pl-2 font-mono text-[10px] font-medium uppercase tracking-wider ${platformStyles[idea.platform] || 'border-l-2 border-faint text-faint'}`}>
             {idea.platform || 'General'}
           </span>
-          <span className="font-mono text-[9px] text-faint">{idea.type}</span>
+          <span className="font-mono text-[10px] text-faint">{idea.type}</span>
         </div>
         
-        <p className="font-body text-[14px] text-text leading-snug group-hover:text-ink transition-colors">
+        <p className="font-body text-[15px] text-text leading-snug group-hover:text-ink transition-colors">
           {idea.text}
         </p>
 
         <div className="pt-2 flex items-center justify-between border-t border-border mt-1">
-          <span className="font-mono text-[9px] text-faint uppercase">
+          <span className="font-mono text-[10px] text-faint uppercase">
             {new Date(idea.date).toLocaleDateString('en-US', { month: 'short', day: '2-digit' })}
           </span>
           <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-            <button className="text-muted hover:text-accent text-[10px] font-medium">EDIT</button>
+            <button className="text-muted hover:text-accent text-[11px] font-medium">EDIT</button>
           </div>
         </div>
       </div>
     </div>
   );
 }
+

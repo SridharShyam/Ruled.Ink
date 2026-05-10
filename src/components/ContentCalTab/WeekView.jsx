@@ -48,7 +48,7 @@ export default function WeekView({ currentDate, content, onAddPiece, showForm, s
           return (
             <div key={i} className={`bg-surface min-h-[500px] p-4 transition-colors flex flex-col gap-4 border-l border-border first:border-l-0 ${isToday ? 'bg-surface2/40' : ''}`}>
               <div className="flex flex-col mb-2">
-                <span className={`text-[10px] font-medium tracking-[0.1em] font-mono uppercase ${isToday ? 'text-accent' : 'text-muted'}`}>{dayLabel}</span>
+                <span className={`text-[11px] font-medium tracking-[0.1em] font-mono uppercase ${isToday ? 'text-accent' : 'text-muted'}`}>{dayLabel}</span>
                 <span className={`text-xl font-medium font-mono ${isToday ? 'text-ink' : 'text-faint'}`}>{date.getDate()}</span>
               </div>
 
@@ -58,22 +58,22 @@ export default function WeekView({ currentDate, content, onAddPiece, showForm, s
                     <div className="flex justify-between items-start">
                       <div className="flex items-center gap-1.5">
                         {platformIcons[item.platform]}
-                        <span className="text-[10px] font-medium leading-tight">{item.title}</span>
+                        <span className="text-[11px] font-medium leading-tight">{item.title}</span>
                       </div>
                     </div>
                     
                     <div className="flex flex-wrap gap-1">
-                      <span className="px-1.5 py-0.5 bg-surface2 rounded-sm text-[8px] font-medium text-muted uppercase">{item.format}</span>
-                      <span className={`px-1.5 py-0.5 rounded-sm text-[8px] font-medium uppercase ${statusColors[item.status]}`}>{item.status}</span>
+                      <span className="px-1.5 py-0.5 bg-surface2 rounded-sm text-[9px] font-medium text-muted uppercase">{item.format}</span>
+                      <span className={`px-1.5 py-0.5 rounded-sm text-[9px] font-medium uppercase ${statusColors[item.status]}`}>{item.status}</span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-[9px] text-muted/60 font-mono mt-1">
+                    <div className="flex items-center gap-2 text-[10px] text-muted/60 font-mono mt-1">
                       <Clock size={10} />
                       <span>{item.estimatedHours}H EST</span>
                     </div>
 
                     {item.notes && (
-                      <p className="text-[9px] text-muted italic line-clamp-2 border-t border-border pt-2 mt-1">{item.notes}</p>
+                      <p className="text-[10px] text-muted italic line-clamp-2 border-t border-border pt-2 mt-1">{item.notes}</p>
                     )}
                   </div>
                 ))}
@@ -84,7 +84,7 @@ export default function WeekView({ currentDate, content, onAddPiece, showForm, s
                 className="mt-auto flex items-center justify-center gap-2 p-2 border border-dashed border-border rounded-md text-muted hover:text-accent hover:border-accent hover:bg-accent/5 transition-all"
               >
                 <Plus size={14} />
-                <span className="text-[9px] font-medium uppercase tracking-widest">ADD PIECE</span>
+                <span className="text-[10px] font-medium uppercase tracking-widest">ADD PIECE</span>
               </button>
             </div>
           );
@@ -111,3 +111,4 @@ export default function WeekView({ currentDate, content, onAddPiece, showForm, s
     </div>
   );
 }
+
