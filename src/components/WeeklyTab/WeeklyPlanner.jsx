@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Calendar, ChevronLeft, ChevronRight, Download } from 'lucide-react';
 import DayColumn from './DayColumn';
 import { generateICS } from './icsExport';
@@ -89,27 +89,44 @@ export default function WeeklyPlanner({ addLog, showToast }) {
   const todayIdx = (now.getDay() + 6) % 7;
   const isCurrentWeek = getWeekKey(now) === getWeekKey(currentDate);
 
+  const scrollContainerRef = useRef(null);
+
+  useEffect(() => {
+    if (isCurrentWeek && scrollContainerRef.current) {
+      const todayCol = scrollContainerRef.current.children[todayIdx];
+      if (todayCol) {
+        const scrollAmount = todayCol.offsetLeft - (scrollContainerRef.current.offsetWidth / 2) + (todayCol.offsetWidth / 2);
+        scrollContainerRef.current.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  }, [isCurrentWeek, todayIdx]);
+
   return (
     <div className="animate-in">
-      <header className="flex items-center justify-between mb-10">
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-4">
-            <button onClick={() => navigateWeek(-1)} className="p-2 hover:bg-surface2 rounded-full transition-colors"><ChevronLeft size={18} /></button>
-            <span className="font-display text-lg font-medium text-ink italic">{getWeekRange()}</span>
-            <button onClick={() => navigateWeek(1)} className="p-2 hover:bg-surface2 rounded-full transition-colors"><ChevronRight size={18} /></button>
-          </div>
+      <header className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10">
+        <div className="flex items-center gap-4">
+          <button onClick={() => navigateWeek(-1)} className="p-2 hover:bg-surface2 rounded-full transition-colors"><ChevronLeft size={18} /></button>
+          <span className="font-display text-lg font-medium text-ink italic">{getWeekRange()}</span>
+          <button onClick={() => navigateWeek(1)} className="p-2 hover:bg-surface2 rounded-full transition-colors"><ChevronRight size={18} /></button>
         </div>
 
         <button 
           onClick={handleExport}
-          className="flex items-center gap-2 px-6 py-2 border border-border3 rounded-md text-muted text-[14px] font-medium hover:bg-surface2 transition-all"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2 border border-border3 rounded-md text-muted text-[14px] font-medium hover:bg-surface2 transition-all"
         >
           <Download size={14} /> EXPORT CALENDAR
         </button>
       </header>
 
-      <div className="overflow-x-auto pb-4 no-scrollbar border border-border">
-        <div className="grid grid-cols-7 min-w-[900px] bg-surface">
+      <div className="relative">
+        <div className="sm:hidden text-center text-[10px] text-muted mb-2 animate-pulse">
+          ← Scroll horizontally to view full week →
+        </div>
+        <div 
+          ref={scrollContainerRef}
+          className="overflow-x-auto pb-4 border border-border rounded-sm scroll-smooth snap-x snap-mandatory"
+        >
+          <div className="grid grid-cols-7 min-w-[1050px] bg-surface">
 
         {days.map((day, i) => {
           const userBlocks = weeklyData[`day_${i}`] || [];

@@ -114,7 +114,7 @@ function App() {
   const renderTabContent = () => {
     switch (activeTab) {
       case 'today':
-        return <TodayTab tasks={tasks} setTasks={setTasks} addLog={addLog} />;
+        return <TodayTab tasks={tasks} setTasks={setTasks} addLog={addLog} showToast={showToast} />;
       case 'skill':
         return <SkillTab studyLogs={studyLogs} setStudyLogs={setStudyLogs} addLog={addLog} />;
       case 'content':

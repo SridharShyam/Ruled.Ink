@@ -14,7 +14,7 @@ export default function DayColumn({ day, date, blocks, onAddBlock, isToday }) {
   const [showForm, setShowForm] = React.useState(false);
 
   return (
-    <div className={`min-h-[600px] border-r border-border last:border-r-0 flex flex-col ${isToday ? 'bg-surface2/30' : ''}`}>
+    <div className={`min-h-[600px] border-r border-border last:border-r-0 flex flex-col snap-center ${isToday ? 'bg-surface2/30' : ''}`}>
       <div className="p-4 border-b border-border flex flex-col gap-1 items-center">
         <span className={`font-body text-xs font-medium uppercase tracking-[0.1em] ${isToday ? 'text-accent' : 'text-muted'}`}>
           {day}

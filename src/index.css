@@ -34,6 +34,7 @@
   --font-display: 'Bookman Old Style', 'URW Bookman', 'Bookman', 'Playfair Display', Georgia, serif;
   --font-body: 'Times New Roman', Times, serif;
   --font-mono: 'Courier New', Courier, monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
   /* Spacing */
   --radius-sm: 4px;
@@ -183,5 +184,23 @@
 
 .animate-in {
   animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* 
+  Mobile optimization: Use system sans-serif for small text (below 14px)
+  for better legibility on high-density mobile screens.
+*/
+@media (max-width: 640px) {
+  .text-xs, 
+  .text-\[10px\], 
+  .text-\[11px\], 
+  .text-\[12px\],
+  [class*="text-[10"],
+  [class*="text-[11"],
+  [class*="text-[12"],
+  [class*="text-[13"],
+  .pill {
+    font-family: var(--font-sans) !important;
+  }
 }
 
