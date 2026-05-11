@@ -143,9 +143,10 @@ export default function WeeklyPlanner({ addLog, showToast }) {
             />
           );
         })}
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 }
 
