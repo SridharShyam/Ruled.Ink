@@ -1,8 +1,6 @@
 # Ruled.Ink
 
-> Your personal productivity system. Built like a notebook. Works like a system.
-
-
+Your personal productivity system. Built like a notebook. Works like a system.
 
 ## What is Ruled.Ink?
 Ruled.Ink is an open-source personal OS for students and builders.
